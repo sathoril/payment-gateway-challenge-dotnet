@@ -2,26 +2,20 @@
 
 namespace PaymentGateway.Api.Models.Requests;
 
-public class PostAcquiringBankRequest(
-    string cardNumber,
-    int expiryMonth,
-    int expiryYear,
-    string currency,
-    int amount,
-    string cvv)
+public class PostAcquiringBankRequest
 {
     [JsonPropertyName("card_number")]
-    public string CardNumber { get; set; } = cardNumber;
+    public string CardNumber { get; set; }
 
     [JsonPropertyName("expiry_date")]
-    public string ExpiryDate { get; set; } = $"{expiryMonth:00}/{expiryYear:0000}";
+    public string ExpiryDate { get; set; }
 
     [JsonPropertyName("currency")]
-    public string Currency { get; set; } = currency;
+    public string Currency { get; set; } 
 
     [JsonPropertyName("amount")]
-    public int Amount { get; set; } = amount;
+    public int Amount { get; set; } 
 
     [JsonPropertyName("cvv")]
-    public string Cvv { get; set; } = cvv;
+    public string Cvv { get; set; } 
 }

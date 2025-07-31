@@ -27,10 +27,7 @@ public class PostPaymentRequest
     [StringLength(4, MinimumLength = 3)]
     [RegularExpression(@"^\d+$")]
     public string Cvv { get; set; }
-
-    // To remove this isValid method, I would suggest using some third party libraries that are made for this type of
-    // validation. For example, FluentAssertion. 
-    // The way below is enough given the size of the project and can be improved/replaced easily.
+    
     public bool IsValid()
     {
         if (Amount < 1)
