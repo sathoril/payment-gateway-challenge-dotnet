@@ -1,11 +1,55 @@
-﻿namespace PaymentGateway.Api.Models.Requests;
+using System.ComponentModel.DataAnnotations;
+
+namespace PaymentGateway.Api.Models.Requests;
 
 public class PostPaymentRequest
 {
-    public int CardNumberLastFour { get; set; }
+    [Required]
+    [StringLength(19, MinimumLength = 14)]
+    public string CardNumber { get; set; }
+    
+    [Required]
+    [Range(1, 12)]
     public int ExpiryMonth { get; set; }
+    
+    [Required]
     public int ExpiryYear { get; set; }
+    
+    [Required]
+    [StringLength(3)]
     public string Currency { get; set; }
+    
+    [Required]
+    [Range(0, int.MaxValue)]
     public int Amount { get; set; }
-    public int Cvv { get; set; }
+    
+    [Required]
+    [StringLength(4, MinimumLength = 3)]
+    [RegularExpression(@"^\d+$")]
+    public string Cvv { get; set; }
+
+    // To remove this isValid method, I would suggest using some third party libraries that are made for this type of
+    // validation. For example, FluentAssertion. 
+    // The way below is enough given the size of the project and can be improved/replaced easily.
+    public bool IsValid()
+    {
+        if (Amount < 1)
+            return false;
+        
+        if (string.IsNullOrWhiteSpace(CardNumber))
+            return false;
+        
+        if (!CardNumber.All(char.IsDigit))
+            return false;
+        
+        var currentMonth = DateTime.UtcNow.Month;
+        var currentYear = DateTime.UtcNow.Year;
+        if (ExpiryYear < currentYear || (ExpiryYear == currentYear && ExpiryMonth <= currentMonth))
+            return false;
+        
+        if (!Enum.IsDefined(typeof(Currency), Currency))
+            return false;
+
+        return true;
+    }
 }

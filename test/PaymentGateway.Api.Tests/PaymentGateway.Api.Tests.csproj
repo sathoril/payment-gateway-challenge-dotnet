@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\src\PaymentGateway.Api\PaymentGateway.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceTests\" />
+  </ItemGroup>
+
 </Project>
