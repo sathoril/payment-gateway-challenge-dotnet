@@ -15,6 +15,7 @@ using PaymentGateway.Application.DTOs.Responses;
 using PaymentGateway.Domain;
 using PaymentGateway.Domain.Entities;
 using PaymentGateway.Domain.Enums;
+using PaymentGateway.Domain.ExternalServices.Responses;
 using PaymentGateway.Domain.Interfaces.Repositories;
 using PaymentGateway.Domain.Interfaces.Services;
 

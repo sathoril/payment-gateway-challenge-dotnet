@@ -8,7 +8,9 @@ using Moq.Protected;
 
 using PaymentGateway.Application.DTOs.Requests;
 using PaymentGateway.Domain;
+using PaymentGateway.Domain.ExternalServices.Responses;
 using PaymentGateway.Infrastructure.HttpClients;
+using PaymentGateway.Infrastructure.HttpClients.Requests;
 
 namespace PaymentGateway.Api.Tests.InfrastructureTests.HttpClientsTests;
 
@@ -203,7 +205,7 @@ public class AcquiringBankHttpClientTests
         Assert.Equal("application/json", capturedRequest.Content?.Headers.ContentType?.MediaType);
 
         var requestContent = await capturedRequest.Content!.ReadAsStringAsync();
-        var bankRequest = JsonSerializer.Deserialize<PostAcquiringBankRequest>(requestContent);
+        var bankRequest = JsonSerializer.Deserialize<AcquiringBankRequest>(requestContent);
         
         Assert.NotNull(bankRequest);
         Assert.Equal("1234567812345678", bankRequest.CardNumber);
@@ -262,7 +264,7 @@ public class AcquiringBankHttpClientTests
 
             // Assert
             var requestContent = await capturedRequest!.Content!.ReadAsStringAsync();
-            var bankRequest = JsonSerializer.Deserialize<PostAcquiringBankRequest>(requestContent);
+            var bankRequest = JsonSerializer.Deserialize<AcquiringBankRequest>(requestContent);
             
             Assert.Equal(expectedRequestExpiryDate, bankRequest!.ExpiryDate);
     }

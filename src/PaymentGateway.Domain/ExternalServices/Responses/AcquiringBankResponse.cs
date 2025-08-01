@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PaymentGateway.Domain;
+namespace PaymentGateway.Domain.ExternalServices.Responses;
 
 public class AcquiringBankResponse
 {

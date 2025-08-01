@@ -1,7 +1,9 @@
 using System.Net.Http.Json;
 
 using PaymentGateway.Domain;
+using PaymentGateway.Domain.ExternalServices.Responses;
 using PaymentGateway.Domain.Interfaces.Services;
+using PaymentGateway.Infrastructure.HttpClients.Requests;
 
 namespace PaymentGateway.Infrastructure.HttpClients;
 
@@ -11,7 +13,7 @@ public class AcquiringBankService(HttpClient httpClient) : IAcquiringBankService
     {
         try
         {
-            PostAcquiringBankRequest bankRequest = new()
+            AcquiringBankRequest bankRequest = new()
             {
                 CardNumber = cardNumber, 
                 ExpiryDate = $"{expiryMonth:00}/{expiryYear:0000}",

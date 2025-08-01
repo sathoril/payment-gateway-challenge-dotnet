@@ -1,3 +1,5 @@
+using PaymentGateway.Domain.ExternalServices.Responses;
+
 namespace PaymentGateway.Domain.Interfaces.Services;
 
 public interface IAcquiringBankService

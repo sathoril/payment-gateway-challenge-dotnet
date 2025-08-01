@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PaymentGateway.Domain;
+namespace PaymentGateway.Infrastructure.HttpClients.Requests;
 
-public class PostAcquiringBankRequest
+public class AcquiringBankRequest
 {
     [JsonPropertyName("card_number")]
     public string CardNumber { get; set; }
