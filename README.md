@@ -13,12 +13,13 @@ PaymentGateway/
 │      ├── Controllers/ # API Controllers 
 │      └── Services/ # Application Services 
 │   └── PaymentGateway.Domain/ # Domain Layer │
-│      ├── Entities/ # Domain Entities │
+│      ├── Entities/ # Domain Entities  │
 │      ├── Enums/ # Domain Enumerations │
+│      ├── ExternalServices/ # Domain classes for external services │
 │      └── Interfaces/ # Domain Interfaces
 │   └── PaymentGateway.Infrastructure/ # Infrastructure Layer │
 │      ├── Repository/ # Data Access │
-│      └── HttpClients/ # External Service Clients
+│      └── HttpClients/ # External Service Clients and Required Classes
 ├── test/ # Test Projects 
     └── PaymentGateway.Api.Tests/ # Unit & Integration Tests
 ```
