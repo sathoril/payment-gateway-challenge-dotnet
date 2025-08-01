@@ -54,7 +54,7 @@ public class PaymentControllerTests
         HttpClient client = CreateWebApplicationMocked();
 
         // Act
-        var response = await client.GetAsync($"/api/Payments/{payment.Id}");
+        var response = await client.GetAsync($"/api/Payment/{payment.Id}");
         var paymentResponse = await response.Content.ReadAsStringAsync();
     
         // Assert
@@ -74,7 +74,7 @@ public class PaymentControllerTests
             .ThrowsAsync(new Exception("Unhandled exception"));
     
         // Act
-        var response = await client.GetAsync($"/api/Payments/{Guid.NewGuid().ToString()}");
+        var response = await client.GetAsync($"/api/Payment/{Guid.NewGuid().ToString()}");
     
         // Assert
         Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
@@ -94,7 +94,7 @@ public class PaymentControllerTests
         var client = webApplicationFactory.CreateClient();
         
         // Act
-        var response = await client.GetAsync($"/api/Payments/{Guid.NewGuid()}");
+        var response = await client.GetAsync($"/api/Payment/{Guid.NewGuid()}");
         
         // Assert
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
@@ -150,7 +150,7 @@ public class PaymentControllerTests
         HttpClient client = CreateWebApplicationMocked();
     
         // Act
-        var response = await client.PostAsJsonAsync("/api/Payments", validRequest);
+        var response = await client.PostAsJsonAsync("/api/Payment", validRequest);
         var paymentResponse = await response.Content.ReadFromJsonAsync<ProcessPaymentResponse>();
     
         // Assert
@@ -189,7 +189,7 @@ public class PaymentControllerTests
         HttpClient client = CreateWebApplicationMocked();
     
         // Act
-        var response = await client.PostAsJsonAsync("/api/Payments", invalidRequest);
+        var response = await client.PostAsJsonAsync("/api/Payment", invalidRequest);
     
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -223,7 +223,7 @@ public class PaymentControllerTests
         HttpClient client = CreateWebApplicationMocked();
     
         // Act
-        var response = await client.PostAsJsonAsync("/api/Payments", invalidRequest);
+        var response = await client.PostAsJsonAsync("/api/Payment", invalidRequest);
     
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -258,7 +258,7 @@ public class PaymentControllerTests
         HttpClient client = CreateWebApplicationMocked();
     
         // Act
-        var response = await client.PostAsJsonAsync("/api/Payments", validRequest);
+        var response = await client.PostAsJsonAsync("/api/Payment", validRequest);
     
         // Assert
         Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
@@ -276,7 +276,7 @@ public class PaymentControllerTests
         HttpClient client = CreateWebApplicationMocked();
     
         // Act
-        var response = await client.PostAsJsonAsync("/api/Payments", (ProcessPaymentRequest)null);
+        var response = await client.PostAsJsonAsync("/api/Payment", (ProcessPaymentRequest)null);
     
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
