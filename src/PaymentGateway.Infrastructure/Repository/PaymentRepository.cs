@@ -5,7 +5,7 @@ namespace PaymentGateway.Infrastructure.Repository;
 
 public class PaymentRepository : IPaymentRepository
 {
-    public List<Payment?> Payments = new();
+    private List<Payment?> Payments = new();
     
     public Task AddAsync(Payment payment)
     {

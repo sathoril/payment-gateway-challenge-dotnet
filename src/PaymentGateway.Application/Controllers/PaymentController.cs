@@ -13,22 +13,12 @@ namespace PaymentGateway.Application.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PaymentController : Controller
+public class PaymentController(
+    IPaymentRepository paymentsRepository,
+    IPaymentUseCase paymentUseCase,
+    IMapper mapper)
+    : Controller
 {
-    private readonly IPaymentRepository _paymentsRepository;
-    private readonly IPaymentUseCase _paymentUseCase;
-    private readonly IMapper _mapper;
-
-    public PaymentController(
-        IPaymentRepository paymentsRepository,
-        IPaymentUseCase paymentUseCase,
-        IMapper mapper)
-    {
-        _paymentsRepository = paymentsRepository;
-        _paymentUseCase = paymentUseCase;
-        _mapper = mapper;
-    }
-
     [HttpGet("{id:guid}")]
     [EndpointDescription("Retrieves a payment by its id")]
     [ProducesResponseType(typeof(GetPaymentByIdResponse), StatusCodes.Status200OK)]
@@ -39,11 +29,11 @@ public class PaymentController : Controller
     {
         try
         {
-            var payment = await _paymentsRepository.GetByIdAsync(id);
+            var payment = await paymentsRepository.GetByIdAsync(id);
             if (payment == null)
                 return NotFound($"Payment with identifier {id} was not found.");
 
-            var mappedResponse = _mapper.Map<Payment, GetPaymentByIdResponse>(payment);
+            var mappedResponse = mapper.Map<Payment, GetPaymentByIdResponse>(payment);
             
             return Ok(mappedResponse);
         }
@@ -68,11 +58,11 @@ public class PaymentController : Controller
     {
         try
         {
-            var response = await _paymentUseCase.ProcessPaymentAsync(
+            var response = await paymentUseCase.ProcessPaymentAsync(
                 request.CardNumber, request.ExpiryMonth, request.ExpiryYear, request.Currency, request.Amount,
                 request.Cvv);
 
-            var mappedResponse = _mapper.Map<Payment, ProcessPaymentResponse>(response);
+            var mappedResponse = mapper.Map<Payment, ProcessPaymentResponse>(response);
 
             return Ok(mappedResponse);
         }

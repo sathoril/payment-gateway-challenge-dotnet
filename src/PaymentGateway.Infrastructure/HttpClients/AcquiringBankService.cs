@@ -7,7 +7,6 @@ namespace PaymentGateway.Infrastructure.HttpClients;
 
 public class AcquiringBankService(HttpClient httpClient) : IAcquiringBankService
 {
-
     public async Task<AcquiringBankResponse> SendPaymentToBankAsync(string cardNumber, int expiryMonth, int expiryYear, string currency, int amount, string cvv)
     {
         try

@@ -7,7 +7,7 @@ namespace PaymentGateway.Application.UseCases;
 public class PaymentUseCase(IAcquiringBankService acquiringBankHttpClient, IPaymentRepository paymentRepository)
     : IPaymentUseCase
 {
-    public async Task<Payment?> ProcessPaymentAsync(string cardNumber, int expiryMonth, int expiryYear, string currency, int amount, string cvv)
+    public async Task<Payment> ProcessPaymentAsync(string cardNumber, int expiryMonth, int expiryYear, string currency, int amount, string cvv)
     {
         var payment = new Payment(cardNumber, expiryMonth, expiryYear, currency, amount, cvv);
         
