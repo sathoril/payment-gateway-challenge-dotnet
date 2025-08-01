@@ -9,16 +9,16 @@ PaymentGateway/
 
 ```
 ├── src/
-├── PaymentGateway.Application/ # Web API & Application Services 
-│   ├── Controllers/ # API Controllers 
-│   └── Services/ # Application Services 
-├── PaymentGateway.Domain/ # Domain Layer │
-│   ├── Entities/ # Domain Entities │
-│   ├── Enums/ # Domain Enumerations │
-│   └── Interfaces/ # Domain Interfaces
-├── PaymentGateway.Infrastructure/ # Infrastructure Layer │
-│   ├── Repository/ # Data Access │
-│   └── HttpClients/ # External Service Clients
+│   └── PaymentGateway.Application/ # Web API & Application Services 
+│      ├── Controllers/ # API Controllers 
+│      └── Services/ # Application Services 
+│   └── PaymentGateway.Domain/ # Domain Layer │
+│      ├── Entities/ # Domain Entities │
+│      ├── Enums/ # Domain Enumerations │
+│      └── Interfaces/ # Domain Interfaces
+│   └── PaymentGateway.Infrastructure/ # Infrastructure Layer │
+│      ├── Repository/ # Data Access │
+│      └── HttpClients/ # External Service Clients
 ├── test/ # Test Projects 
     └── PaymentGateway.Api.Tests/ # Unit & Integration Tests
 ```
