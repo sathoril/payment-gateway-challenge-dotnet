@@ -64,7 +64,7 @@ Response (201 Created):
 
 #### Retrieve Payment
 
-```
+```http
 GET /api/payments/{id}
 
 Response (200 OK):
