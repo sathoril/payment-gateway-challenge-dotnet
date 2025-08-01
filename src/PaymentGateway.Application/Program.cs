@@ -1,9 +1,11 @@
 using System.Text.Json.Serialization;
 
 using PaymentGateway.Application.Mappers;
-using PaymentGateway.Application.Services;
+using PaymentGateway.Application.UseCases;
 using PaymentGateway.Domain.Interfaces.Repositories;
 using PaymentGateway.Domain.Interfaces.Services;
+using PaymentGateway.Infrastructure.HttpClients;
+using PaymentGateway.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

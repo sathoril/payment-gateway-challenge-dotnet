@@ -12,7 +12,7 @@ using Moq.AutoMock;
 using PaymentGateway.Application.Controllers;
 using PaymentGateway.Application.DTOs.Requests;
 using PaymentGateway.Application.DTOs.Responses;
-using PaymentGateway.Application.Models.Responses;
+using PaymentGateway.Domain;
 using PaymentGateway.Domain.Entities;
 using PaymentGateway.Domain.Enums;
 using PaymentGateway.Domain.Interfaces.Repositories;
@@ -20,7 +20,7 @@ using PaymentGateway.Domain.Interfaces.Services;
 
 namespace PaymentGateway.Api.Tests.Application.ControllerTests;
 
-public class PaymentsControllerTests
+public class PaymentControllerTests
 {
     private readonly AutoMocker _autoMocker = new();
     
@@ -89,7 +89,7 @@ public class PaymentsControllerTests
     public async Task GetPayment_Returns404Error_IfPaymentDoesntExists()
     {
         // Arrange
-        var webApplicationFactory = new WebApplicationFactory<PaymentsController>();
+        var webApplicationFactory = new WebApplicationFactory<PaymentController>();
         var client = webApplicationFactory.CreateClient();
         
         // Act
@@ -289,7 +289,7 @@ public class PaymentsControllerTests
     
     private HttpClient CreateWebApplicationMocked()
     {
-        var webApplicationFactory = new WebApplicationFactory<PaymentsController>();
+        var webApplicationFactory = new WebApplicationFactory<PaymentController>();
         var client = webApplicationFactory.WithWebHostBuilder(builder =>
                 builder.ConfigureServices(services =>
                 {

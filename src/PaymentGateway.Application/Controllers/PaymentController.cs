@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using PaymentGateway.Application.DTOs.Requests;
 using PaymentGateway.Application.DTOs.Responses;
-using PaymentGateway.Application.Models.Requests;
-using PaymentGateway.Application.Models.Responses;
-using PaymentGateway.Application.Services;
+using PaymentGateway.Domain;
 using PaymentGateway.Domain.Entities;
 using PaymentGateway.Domain.Interfaces.Repositories;
 using PaymentGateway.Domain.Interfaces.Services;
@@ -15,13 +13,13 @@ namespace PaymentGateway.Application.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PaymentsController : Controller
+public class PaymentController : Controller
 {
     private readonly IPaymentRepository _paymentsRepository;
     private readonly IPaymentUseCase _paymentUseCase;
     private readonly IMapper _mapper;
 
-    public PaymentsController(
+    public PaymentController(
         IPaymentRepository paymentsRepository,
         IPaymentUseCase paymentUseCase,
         IMapper mapper)
@@ -33,7 +31,7 @@ public class PaymentsController : Controller
 
     [HttpGet("{id:guid}")]
     [EndpointDescription("Retrieves a payment by its id")]
-    [ProducesResponseType(typeof(AcquiringBankResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(GetPaymentByIdResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -62,7 +60,7 @@ public class PaymentsController : Controller
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(AcquiringBankResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProcessPaymentResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]

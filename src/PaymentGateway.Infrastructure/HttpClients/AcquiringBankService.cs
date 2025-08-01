@@ -1,11 +1,9 @@
 using System.Net.Http.Json;
 
-using PaymentGateway.Application.Models.Requests;
-using PaymentGateway.Application.Models.Responses;
-using PaymentGateway.Domain.Entities;
+using PaymentGateway.Domain;
 using PaymentGateway.Domain.Interfaces.Services;
 
-namespace PaymentGateway.Application.Services;
+namespace PaymentGateway.Infrastructure.HttpClients;
 
 public class AcquiringBankService(HttpClient httpClient) : IAcquiringBankService
 {

@@ -2,8 +2,8 @@ using Moq;
 using Moq.AutoMock;
 
 using PaymentGateway.Application.DTOs.Requests;
-using PaymentGateway.Application.Models.Responses;
-using PaymentGateway.Application.Services;
+using PaymentGateway.Application.UseCases;
+using PaymentGateway.Domain;
 using PaymentGateway.Domain.Entities;
 using PaymentGateway.Domain.Enums;
 using PaymentGateway.Domain.Interfaces.Repositories;

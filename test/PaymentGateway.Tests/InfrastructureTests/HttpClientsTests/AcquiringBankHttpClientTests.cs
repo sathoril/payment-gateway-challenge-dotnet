@@ -7,9 +7,8 @@ using Moq.AutoMock;
 using Moq.Protected;
 
 using PaymentGateway.Application.DTOs.Requests;
-using PaymentGateway.Application.Models.Requests;
-using PaymentGateway.Application.Models.Responses;
-using PaymentGateway.Application.Services;
+using PaymentGateway.Domain;
+using PaymentGateway.Infrastructure.HttpClients;
 
 namespace PaymentGateway.Api.Tests.InfrastructureTests.HttpClientsTests;
 

@@ -2,7 +2,7 @@ using PaymentGateway.Domain.Entities;
 using PaymentGateway.Domain.Interfaces.Repositories;
 using PaymentGateway.Domain.Interfaces.Services;
 
-namespace PaymentGateway.Application.Services;
+namespace PaymentGateway.Application.UseCases;
 
 public class PaymentUseCase(IAcquiringBankService acquiringBankHttpClient, IPaymentRepository paymentRepository)
     : IPaymentUseCase

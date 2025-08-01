@@ -1,8 +1,7 @@
-﻿using PaymentGateway.Application.Models.Responses;
-using PaymentGateway.Domain.Entities;
+﻿using PaymentGateway.Domain.Entities;
 using PaymentGateway.Domain.Interfaces.Repositories;
 
-namespace PaymentGateway.Application.Services;
+namespace PaymentGateway.Infrastructure.Repository;
 
 public class PaymentRepository : IPaymentRepository
 {
