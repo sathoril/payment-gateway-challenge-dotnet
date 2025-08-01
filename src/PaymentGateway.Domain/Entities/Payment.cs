@@ -25,7 +25,7 @@ public class Payment
     public int Amount { get; private set; }
     public string CVV { get; private set; }
     public PaymentStatus Status { get; private set; }
-    public string AuthorizationCode { get; set; }
+    public string AuthorizationCode { get; private set; }
     
     public void SetAuthorized(string authorizationCode)
     {
