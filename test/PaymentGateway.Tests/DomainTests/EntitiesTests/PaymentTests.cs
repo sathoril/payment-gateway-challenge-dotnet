@@ -157,7 +157,7 @@ public class PaymentTests
     {
         // Arrange
         var currentDate = DateTime.Now;
-        var expiredMonth = currentDate.Month;
+        var expiredMonth = currentDate.Month - 1;
         var expiredYear = currentDate.Year;
 
         // Act & Assert
